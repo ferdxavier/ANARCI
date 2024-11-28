@@ -56,8 +56,8 @@ class CustomInstallCommand(install):
 
 
 setup(
-    name="anarci",
-    version="1.3",
+    name="myanarci",
+    version="1.0.0",
     description="Antibody Numbering and Receptor ClassIfication",
     author="James Dunbar",
     author_email="opig@stats.ox.ac.uk",

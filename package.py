@@ -23,12 +23,12 @@
 from spack.package import *
 
 
-class PyAnarci(PythonPackage):
+class PyMyanarci(PythonPackage):
     """FIXME: Put a proper description of your package here."""
 
     # FIXME: Add a proper url for your package's homepage here.
-    homepage = "https://www.example.com"
-    url = "file:///home/fernando/Documentos/anarci-1.3.tar.gz"
+    homepage = "https://github.com/ferdxavier/myanarci"
+    git = "https://github.com/ferdxavier/myanarci.git"
 
     # FIXME: Add a list of GitHub accounts to
     # notify when the package is updated.
@@ -42,6 +42,7 @@ class PyAnarci(PythonPackage):
     version("1.0.0")
 
     # FIXME: Add dependencies if required.
+    depends_on("python")
     depends_on("hmmer")
     depends_on("py-biopython")
 
