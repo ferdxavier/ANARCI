@@ -16,7 +16,9 @@ class CustomInstallCommand(install):
         ANARCI_LOC = (
             os.path.join(site.getsitepackages()[0]) + "/anarci"
         )  # site-packages/ folder
+        print(f'ANARCI_LOC = {ANARCI_LOC}')
         ANARCI_BIN = sys.executable.split("python")[0]  # bin/ folder
+        print(f'ANARCI_BIN = {ANARCI_BIN}')
 
         shutil.copy("bin/ANARCI", ANARCI_BIN)  # copy ANARCI executable
         print("INFO: ANARCI lives in: ", ANARCI_LOC)
@@ -42,10 +44,15 @@ class CustomInstallCommand(install):
 
         if not os.path.exists(ANARCI_LOC + "/dat"):
             os.mkdir(ANARCI_LOC + "/dat")
+            
+        if not os.path.exists(ANARCI_LOC + "/dat/HMMs"):
+            os.mkdir(ANARCI_LOC + "/dat/HMMs")
 
-        shutil.copytree(f"{PATH_APP}/HMMs", ANARCI_LOC + "/dat/", dirs_exist_ok=True)
+        shutil.copytree(f"{PATH_APP}/HMMs", ANARCI_LOC + "/dat/HMMs", dirs_exist_ok=True)
 
         # Remove data from HMMs generation
+        
+    """  
         try:
             shutil.rmtree(f"{PATH_APP}/curated_alignments/")
             shutil.rmtree(f"{PATH_APP}/muscle_alignments/")
@@ -54,10 +61,11 @@ class CustomInstallCommand(install):
         except OSError:
             pass
 
-
+    """
+    
 setup(
-    name="myanarci",
-    version="1.0.0",
+    name="anarci",
+    version="1.3",
     description="Antibody Numbering and Receptor ClassIfication",
     author="James Dunbar",
     author_email="opig@stats.ox.ac.uk",

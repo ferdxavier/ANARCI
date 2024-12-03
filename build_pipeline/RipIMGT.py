@@ -13,6 +13,7 @@ import urllib.request, urllib.parse, urllib.error, os, sys
 
 # Set globals
 file_path  = os.path.split(__file__)[0]
+print(f'<<<<----------->>> file_path = {file_path}')
 html_outpath =  os.path.join( file_path, "IMGT_sequence_files", "htmlfiles" )
 fasta_outpath = os.path.join( file_path, "IMGT_sequence_files", "fastafiles" )
 
