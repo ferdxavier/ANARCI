@@ -1,6 +1,6 @@
 # Run the pipeline to get the sequences, format them and build the databases
 
-DIR="/home/fernando/Documentos/myanarci/build_pipeline"
+DIR="."
 
 # Rip the sequences from the imgt website. HTML may change in the future. 
 mkdir -p $DIR/IMGT_sequence_files/htmlfiles
@@ -21,3 +21,4 @@ hmmbuild --hand $DIR/HMMs/ALL.hmm $DIR/curated_alignments/ALL.stockholm
 # Turn the output HMMs file into a binary form. This is required for hmmscan that is used in ARNACI.
 hmmpress -f $DIR/HMMs/ALL.hmm 
 #hmmpress -f $DIR/HMMs/ALL_AND_C.hmm
+
