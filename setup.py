@@ -1,7 +1,8 @@
 import shutil, os, subprocess
 import site, sys
 from importlib import util
-from distutils.core import setup
+#from distutils.core import setup
+from setuptools import setup
 from setuptools.command.install import install
 from pathlib import Path
 
