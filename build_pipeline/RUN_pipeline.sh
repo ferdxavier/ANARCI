@@ -22,3 +22,7 @@ hmmbuild --hand $DIR/HMMs/ALL.hmm $DIR/curated_alignments/ALL.stockholm
 hmmpress -f $DIR/HMMs/ALL.hmm 
 #hmmpress -f $DIR/HMMs/ALL_AND_C.hmm
 
+# Copy depends
+mkdir -p ../lib/python/anarci/dat
+cp -R HMMs/ ../lib/python/anarci/dat/HMMs
+cp curated_alignments/germlines.py ../lib/python/anarci
