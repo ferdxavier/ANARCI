@@ -1,31 +1,17 @@
 import shutil, os, subprocess
 import site, sys
 from importlib import util
-#from distutils.core import setup
-from setuptools import setup
+from distutils.core import setup
 from setuptools.command.install import install
-from pathlib import Path
 
 class CustomInstallCommand(install):
    def run(self):
-       #install.run(self)
+       install.run(self)
        # Post-installation routine
        ANARCI_LOC = os.path.join(site.getsitepackages()[0], 'anarci') # site-packages/ folder
        ANARCI_BIN = sys.executable.split('python')[0] # bin/ folder
-       
-       """
-            Primeira add
-       """
-       if not os.path.exists(os.path.join(ANARCI_LOC, "dat/HMMs")):
-           Path(os.path.join(ANARCI_LOC, "dat/HMMs")).mkdir(parents=True, exist_ok=True)
 
        shutil.copy('bin/ANARCI', ANARCI_BIN) # copy ANARCI executable
-       
-       """
-            Segunda add
-       """
-       shutil.copytree( "lib/python/anarci", ANARCI_LOC, dirs_exist_ok=True)
-        
        print("INFO: ANARCI lives in: ", ANARCI_LOC) 
 
        # Build HMMs from IMGT germlines
@@ -40,17 +26,8 @@ class CustomInstallCommand(install):
        
        # Copy HMMs where ANARCI can find them
        shutil.copy( "curated_alignments/germlines.py", ANARCI_LOC )
-       
-       """
-            Terceira: delete
-       """
-       # os.mkdir(os.path.join(ANARCI_LOC, "dat"))
-       
-       """
-            Quarta: update
-       """
-       #shutil.copytree( "HMMs", os.path.join(ANARCI_LOC, "dat/HMMs/") )
-       shutil.copytree( "HMMs", os.path.join(ANARCI_LOC, "dat/HMMs/"), dirs_exist_ok=True)
+       os.mkdir(os.path.join(ANARCI_LOC, "dat"))
+       shutil.copytree( "HMMs", os.path.join(ANARCI_LOC, "dat/HMMs/") )
       
       # Remove data from HMMs generation
        try:
@@ -74,3 +51,4 @@ setup(name='anarci',
      scripts=['bin/ANARCI'],
      cmdclass={"install": CustomInstallCommand, }, # Run post-installation routine
     )
+
