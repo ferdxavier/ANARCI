@@ -19,7 +19,7 @@ setup(name='anarci',
       package_dir={'anarci': 'lib/python/anarci'},
       # Copia os binário para o direto bin do ambiente
       data_files = [ ('bin', ['bin/muscle', 'bin/muscle_macOS', 'bin/ANARCI']), 
-                     ('lib', os.listdir(os.getcwd() +'/lib/python/anarci/dat/HMMs'))],
+                     ('lib/python/anarci/dat/HMMs', os.listdir(os.getcwd() +'/lib/python/anarci/dat/HMMs'))],
                      """
                               ['lib/python/anarci/dat/HMMs/ALL.hmm', 
                               'lib/python/anarci/dat/HMMs/ALL.hmm.h3f',
