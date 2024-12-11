@@ -10,7 +10,7 @@ class CustomInstallCommand(install):
         # Pega o diretorio bin 
        
         ANARCI_BIN = sys.executable
-        print(sys.version)
+        
         print(f'subprocess.__path__ --------> {self.exec_prefix}')
         print(f'os.getgwd-----> { os.getcwd() } ')
         print(f'sys.prefix -----> { sys.prefix } ')
@@ -38,9 +38,9 @@ setup(name='anarci',
                               'lib/python/anarci/dat/HMMs/ALL.hmm.h3i',
                               'lib/python/anarci/dat/HMMs/ALL.hmm.h3m',
                               'lib/python/anarci/dat/HMMs/ALL.hmm.h3p'])],
+
       include_package_data = True,
       # Coloca os binários no contexto da venv / env
       scripts=['bin/ANARCI'],
       cmdclass={"install": CustomInstallCommand, }, # Run post-installation routine
 )
-
