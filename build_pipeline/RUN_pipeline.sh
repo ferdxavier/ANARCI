@@ -1,6 +1,8 @@
 #!/bin/bash
 # Run the pipeline to get the sequences, format them and build the databases
 
+pwd
+
 echo "INFO: ANARCI lives in: "$(pwd)
 echo "INFO: Downloading germlines from IMGT and building HMMs..."
 echo "INFO: running 'RUN_pipeline.sh', this will take a couple a minutes."
