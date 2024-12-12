@@ -1,6 +1,15 @@
+#!/bin/bash
 # Run the pipeline to get the sequences, format them and build the databases
 
-DIR="."
+echo "INFO: ANARCI lives in: "$(pwd)
+echo "INFO: Downloading germlines from IMGT and building HMMs..."
+echo "INFO: running 'RUN_pipeline.sh', this will take a couple a minutes."
+
+# Workdir
+DIR=$(pwd)/build_pipeline
+
+# Places binaries in processing context
+export PATH="$PATH:$(pwd)/bin"
 
 # Rip the sequences from the imgt website. HTML may change in the future. 
 mkdir -p $DIR/IMGT_sequence_files/htmlfiles
@@ -22,7 +31,7 @@ hmmbuild --hand $DIR/HMMs/ALL.hmm $DIR/curated_alignments/ALL.stockholm
 hmmpress -f $DIR/HMMs/ALL.hmm 
 #hmmpress -f $DIR/HMMs/ALL_AND_C.hmm
 
-# Copy depends
-mkdir -p ../lib/python/anarci/dat
-cp -R HMMs/ ../lib/python/anarci/dat/HMMs
-cp curated_alignments/germlines.py ../lib/python/anarci
+# Copy depends inside 'temp' project
+mkdir -p $(pwd)/lib/python/anarci/dat
+cp -R $DIR/HMMs/ $(pwd)/lib/python/anarci/dat
+cp $DIR/curated_alignments/germlines.py $(pwd)/lib/python/anarci
